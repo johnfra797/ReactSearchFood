@@ -10,9 +10,11 @@ const Home : React.FC<HomeInterface> = () => {
 	return (
 		<>
 		{
-			foodsState.map((food:Food)=>{
-				return <FoodCard food={food}></FoodCard>
-			})
+			Array.isArray(foodsState)
+			? foodsState.map((food:Food)=>{
+					return <FoodCard food={food}></FoodCard>
+				})
+			: null
 		}
 		</>
 	);
