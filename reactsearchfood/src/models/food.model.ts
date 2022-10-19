@@ -1,19 +1,8 @@
-export interface Id {
-  $oid: string;
-}
-
-export interface Nutrient {
-  id: number;
-  number: string;
-  name: string;
-  rank: number;
-  unitName: string;
-}
 
 export interface FoodNutrientSource {
-  id: number;
   code: string;
   description: string;
+  id: number;
 }
 
 export interface FoodNutrientDerivation {
@@ -22,79 +11,52 @@ export interface FoodNutrientDerivation {
   foodNutrientSource: FoodNutrientSource;
 }
 
-export interface FoodNutrient {
-  type: string;
+export interface Nutrient {
   id: number;
-  nutrient: Nutrient;
-  dataPoints: number;
-  foodNutrientDerivation: FoodNutrientDerivation;
-  max: number;
-  min: number;
-  median: number;
-  amount: number;
+  name: string;
+  number: string;
+  rank: number;
+  unitName: string;
 }
 
-export interface NutrientConversionFactor {
+export interface FoodNutrient {
+  amount: number;
+  dataPoints: number;
+  foodNutrientDerivation: FoodNutrientDerivation;
+  id: number;
+  max: number;
+  median: number;
+  min: number;
+  nutrient: Nutrient;
   type: string;
-  proteinValue: number;
-  fatValue: number;
-  carbohydrateValue: number;
-  value?: number;
 }
 
 export interface FoodCategory {
-  description: string;
-}
-
-export interface MeasureUnit {
-  id: number;
-  name: string;
-  abbreviation: string;
-}
-
-export interface FoodPortion {
-  id: number;
-  measureUnit: MeasureUnit;
-  gramWeight: number;
-  sequenceNumber: number;
-  minYearAcquired: number;
-  modifier: string;
-}
-
-export interface FoodCategory2 {
-  id: number;
   code: string;
   description: string;
+  id: number;
 }
 
 export interface InputFood2 {
-  foodClass: string;
+  dataType: string;
   description: string;
   fdcId: number;
-  dataType: string;
-  foodCategory: FoodCategory2;
+  foodCategory: FoodCategory;
+  foodClass: string;
   publicationDate: string;
 }
 
 export interface InputFood {
-  id: number;
   foodDescription: string;
+  id: number;
   inputFood: InputFood2;
 }
 
 export interface Food {
-  _id: Id;
-  foodClass: string;
   description: string;
+  foodCategory: string;
+  foodClass: string;
   foodNutrients: FoodNutrient[];
-  foodAttributes: any[];
-  nutrientConversionFactors: NutrientConversionFactor[];
-  isHistoricalReference: boolean;
-  ndbNumber: number;
-  fdcId: number;
-  dataType: string;
-  foodCategory: FoodCategory;
-  foodPortions: FoodPortion[];
   inputFoods: InputFood[];
   publicationDate: string;
 }

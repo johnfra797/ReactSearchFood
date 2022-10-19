@@ -3,6 +3,7 @@ import pymongo
 import bson.json_util as json_util
 from Configuration import Configuration
 from flask_cors import CORS, cross_origin
+import json
 
 ConfigApi = Configuration()
 myclient = pymongo.MongoClient(ConfigApi.MONGO_DB_SERVER())
@@ -28,4 +29,15 @@ def search():
     return result
 
 def search_for_text(search_text):
-    return json_util.dumps(mycol.find({"$text": {"$search": search_text}}))
+    dataList =mycol.find({"$text": {"$search": search_text}})
+    listResult=[]
+    for data in dataList:
+        objResult = {}
+        objResult['description'] = data['description']
+        objResult['publicationDate'] = data['publicationDate']
+        objResult['foodClass'] = data['foodClass']
+        objResult['foodCategory'] = data['foodCategory']['description']
+        objResult['foodNutrients'] = data['foodNutrients']
+        objResult['inputFoods'] = data['inputFoods']
+        listResult.append(objResult)
+    return listResult

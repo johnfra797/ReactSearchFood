@@ -1,5 +1,5 @@
 
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { Food } from '../models/food.model';
 import { foodSlice } from './states';
 export interface AppStore{
@@ -8,5 +8,8 @@ export interface AppStore{
 export default configureStore<AppStore>({
     reducer:{
         food:foodSlice.reducer
-    }
+    },
+    middleware:(getDefaultMiddleware:any)=> getDefaultMiddleware({
+        serializableCheck: false,
+      })
 })

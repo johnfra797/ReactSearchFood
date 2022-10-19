@@ -7,6 +7,9 @@ function App() {
   return (
     <Provider store={store}>
       <NavBar/>
+      <br/>
+      <br/>
+      <br/>
       <Home></Home>
     </Provider>
   )

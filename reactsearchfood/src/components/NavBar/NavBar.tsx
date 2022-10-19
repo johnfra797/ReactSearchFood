@@ -12,8 +12,9 @@ export interface NavBarInterface {}
 const NavBar: React.FC<NavBarInterface> = () => {
   const [targetValue, setTargetValue] = useState("");
   const dispatcher = useDispatch();
-  const searchValue = () => {
-    dispatcher(addFood(searchFoodByValue(targetValue)));
+  const searchValue = async () => {
+    const result = await searchFoodByValue(targetValue);
+    dispatcher(addFood(result));
   };
   const handleChange = (event: any) => {
     setTargetValue(event.target.value);

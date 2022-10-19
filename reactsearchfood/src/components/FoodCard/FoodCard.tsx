@@ -54,20 +54,18 @@ const FoodCard: React.FC<FoodCardInterface> = (props: FoodCardInterface) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.food.description}
+        subheader={props.food.publicationDate}
       />
       <CardMedia
         component="img"
         height="194"
         image="https://mui.com/static/images/cards/paella.jpg"
-        alt="Paella dish"
+        alt={props.food.foodClass}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {props.food.foodCategory}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

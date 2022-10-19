@@ -1,11 +1,9 @@
-
-
 import { createSlice } from "@reduxjs/toolkit";
 import { LocalStorageTypes } from "../../models/enum";
-import { Food } from '../../models/food.model';
-import { getLocalStorage, setLocalStorage } from '../../utilities';
+import { Food } from "../../models/food.model";
+import { getLocalStorage, setLocalStorage } from "../../utilities";
 
-const initialState:Food[] = [];
+const initialState: Food[] = [];
 
 export const foodSlice = createSlice({
   name: LocalStorageTypes.FOOD,
@@ -14,10 +12,9 @@ export const foodSlice = createSlice({
     : initialState,
   reducers: {
     addFood: (state, action) => {
-        setLocalStorage(LocalStorageTypes.FOOD,action.payload);
-        return action.payload;
+      setLocalStorage(LocalStorageTypes.FOOD, action.payload);
+      return action.payload;
     },
   },
 });
-export const {addFood} = foodSlice.actions;
-
+export const { addFood } = foodSlice.actions;

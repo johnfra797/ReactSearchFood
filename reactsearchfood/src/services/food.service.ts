@@ -1,4 +1,4 @@
-const baseUrl = "http://209.172.47.156";
+const baseUrl = "https://apisearch.vcservices-cfapis.net/";
 
 export const searchFoodByValue = (value:string) => {
   return fetch(`${baseUrl}/search?value=${value}`)
